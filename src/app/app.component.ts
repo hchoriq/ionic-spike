@@ -15,15 +15,20 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private mixpanel: Mixpanel) {
     this.mixpanel = mixpanel;
     platform.ready().then(() => {
+      console.log('here');
+      const token = 'ccad90a41aed70fbcd9dbd223a430759';
+      this.mixpanel.init(token)
+        .then((resp) => console.log('response1: ' + resp))
+        .then((resp) => console.log('response2: ' + resp))
+        .catch(err => console.log('error1: ' + err));
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       Pro.monitoring.exception(new Error('test error'))
       statusBar.styleDefault();
       splashScreen.hide();
     });
-    const token = 'ccad90a41aed70fbcd9dbd223a430759';
-    this.mixpanel.init(token)
-      .then((resp) => console.log(resp));
+
   }
 }
 
