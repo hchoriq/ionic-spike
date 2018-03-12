@@ -4,6 +4,7 @@ import { ErrorHandler, Injectable, Injector, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Mixpanel } from '@ionic-native/mixpanel';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -51,6 +52,7 @@ export class MyErrorHandler implements ErrorHandler {
     StatusBar,
     SplashScreen,
     IonicErrorHandler,
+    Mixpanel,
     {provide: ErrorHandler, useClass: MyErrorHandler}
   ]
 })
